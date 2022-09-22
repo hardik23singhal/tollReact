@@ -1,24 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
 
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import data from "./data";
+import data2 from "./data2";
+import Table from "./DataTable";
+import Table2 from "./DataTable2";
+import AddVehicle from "./AddVehicle";
+
+import AddToll from "./AddToll";
 function App() {
+  const clickhandler = name => console.log("delete", name);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route exact path="/dashboard" element={<Table data={data} click={clickhandler}/>} />
+        <Route exact path="/tolllist" element={<Table2 data={data2} click={clickhandler}/>} />
+        <Route exact path="/addvehicle" element={<AddVehicle/>} />
+       
+       
+        <Route exact path="/addtoll" element={<AddToll/>} />
+       {/* <Route path="/register" element={<Register />} /> */}
+{/* 
+        <Route path="/dashboard" element={[<Navbar />, <Dashboard />]} />
+
+        <Route
+          path="/create_project"
+          element={[<Navbar />, <CreateProjectForm />]}
+        />
+
+        <Route
+          path="/edit_project/"
+          element={[<Navbar />, <EditProjectForm />]}
+        /> */}
+
+        </Routes>
+    </BrowserRouter>
   );
 }
 
